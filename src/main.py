@@ -38,6 +38,14 @@ JUMP_COOLDOWN = 1.0
 print("Sistem Aktif! Fitur Lengkap Siap Digunakan.")
 print("Tekan tombol 'ESC' di jendela kamera untuk keluar dengan aman.")
 
+cv2.namedWindow('Motion Tracking WoW Mage', cv2.WINDOW_NORMAL)
+
+# ukuran window
+cv2.resizeWindow('Motion Tracking WoW Mage', 650, 1080)
+
+# posisi window di layar
+cv2.moveWindow('Motion Tracking WoW Mage', 0, 0)
+
 while cap.isOpened():
 
     success, image = cap.read()
@@ -345,7 +353,9 @@ while cap.isOpened():
 
                 is_walking = False
 
-    cv2.imshow('Motion Tracking WoW Mage', image)
+    display = cv2.resize(image, (640, 1080))
+
+    cv2.imshow('Motion Tracking WoW Mage', display)
 
     if cv2.waitKey(5) & 0xFF == 27:
         break
